@@ -1,0 +1,77 @@
+show dbs //consulta base de dados//
+
+use Biblioteca
+
+show collections //Consultas as collection dentro da base de dados//
+
+db.createCollection("Livros");
+
+
+db.Livros.find().pretty() //puedo buscar por colleciones//
+
+
+db.Livros.insertMany([
+
+ {nome:"Duna", autor:"Frank Hebert",
+ genero:"Ficção", ano:"1965", isbn:"978-85-7657-101-8"},
+
+ {nome:"Dom Casmurro", autor:"Machado de Assis",
+ genero:"Ficção", ano:"1899", isbn:"978-85-0815-361-9"},
+
+ {nome:"O Sol é para todos", autor:"Harper Lee",
+ genero:"Ficção", ano:"1960", isbn:"972-29-0683-6"},
+
+ {nome:"Cosmos", autor:"Carl Sagan",
+ genero:"Não-Ficção", ano:"1980", isbn:"978-0-345-53943-4"},
+
+ {nome:"Uma breve história do tempo", autor:"Stephen Hawking",
+ genero:"Não-Ficção", ano:"1988", isbn:"972-662-010-4"},
+
+ {nome:"Devoradores de estrelas", autor:"Andy Weir",
+ genero:"Ficção", ano:"2021", isbn:"978-0-593-39556-1"},
+
+ ])
+
+ db.Livros.find({nome:"Cosmos"}); //consulta por nome, livro Cosmos//
+ 
+ db.Livros.insertOne({nome:"1984", autor:"George Orwell",
+ genero:"Ficção", ano:"1949", isbn:"978-8-535-91484-9"}) //Adicione o livro 1984//
+
+ db.Livros.remove({"_id": ObjectId("617acc88dc43211ac81ca659")}); //Rremovi o livro 1984//
+
+ db.Livros.find({ano:{$lte: "1979"}})//consulta livros lançados antes de 1979//
+
+ db.Livros.find({ano:{$ne: "1960"}})//consult livros do ano 1960//
+
+ db.Livros.find({nome: /^D/});
+
+ db.Livros.find({nome: /s$/});
+
+ db.Livros.find({nome: /-4$/});
+
+ db.Livros.updateOne({"nome": "Devoradores de estrelas"},
+ {$set: {"nome": "Project Hail Mary"}});   //Torcar nome Devoradores de estrelas para Porject Hail Mary//
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
